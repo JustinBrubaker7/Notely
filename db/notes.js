@@ -15,13 +15,15 @@ class Note {
         })
     }
     saveNote(note){
-    let oldNoteData = this.read().then((notes) => {
-        console.log(oldNoteData)
-    })
-
-    return fs.writeFile('./db/db.json', oldNoteData, (err) =>
-    err ? console.log(err) : console.log('Successfully added note!')
+        return this.read().then((notes) => {
+            const oldnotes = JSON.parse(notes)
+            //console.log(oldnotes)
+            oldnotes.push(note)
+            console.log(oldnotes)
+            fs.writeFile('./db/db.json', oldnotes, (err) =>
+            err ? console.log(err) : console.log('Successfully added note!')
   );
+        })
      }
 }
 

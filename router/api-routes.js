@@ -14,13 +14,9 @@ router.get('/notes', (req,res)=> {
 
 //route to add new notes
 router.post('/notes', (req,res)=> {
-    const newNotes = JSON.stringify(req.body)
+    const newNotes = req.body;
+    //console.log(newNotes)
     note.saveNote(newNotes).then((notes) => res.json(notes));
-
-      // const newNotes = req.body
-      // note.saveNote(newNotes)
-
-
 })
 
 
