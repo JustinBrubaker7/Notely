@@ -11,6 +11,7 @@ class Note {
     allNotes(){
        return this.read().then((notes) => {
             const parseNotes = JSON.parse(notes).map((note) => note)
+           // console.log(parseNotes)
             return parseNotes;
         })
     }
@@ -26,7 +27,6 @@ class Note {
         })
      }
 }
-
 
 
 module.exports = new Note();
