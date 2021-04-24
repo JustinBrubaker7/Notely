@@ -15,12 +15,12 @@ router.get('/notes', (req,res)=> {
 //route to add new notes
 router.post('/notes', (req,res)=> {
     const newNotes = JSON.stringify(req.body);
-    console.log(newNotes);
-    note.allNotes().then((notes => {
+    // console.log(newNotes);
+    note.saveNote(newNotes).then((notes) => {
+        res.json(notes)
+    })
+    
 
-    }))
-    // fs.writeFile('./db/db.json', newNotes, (err) =>
-    // err ? console.log(err) : console.log('Successfully added note!')  );
 })
 
 

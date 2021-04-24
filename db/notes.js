@@ -16,14 +16,22 @@ class Note {
         })
     }
     saveNote(note){
-        return this.read().then((notes) => {
-            const oldnotes = JSON.parse(notes)
+        return this.allNotes().then((notes) => {
+            
+            let oldnotes = notes
+            
+            //console.log(note)
+            let newNote = JSON.parse(note)
             //console.log(oldnotes)
-            oldnotes.push(note)
+            
+            oldnotes.push(newNote)
+            
             console.log(oldnotes)
-            fs.writeFile('./db/db.json', oldnotes, (err) =>
-            err ? console.log(err) : console.log('Successfully added note!')
-  );
+            
+            let allNotes = JSON.stringify(oldnotes)
+            
+            fs.writeFile('./db/db.json', allNotes, (err) =>
+            err ? console.log(err) : console.log('Successfully added note!'));
         })
      }
 }
