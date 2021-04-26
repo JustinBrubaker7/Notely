@@ -2,7 +2,7 @@
   # Notely
 
   ## Description
-  #### The note taking app. A web based note taking app helps you easily store information and pull it back up again when you need it most. 
+  #### The note taking app. A web based note taking application that helps you easily store information and pull it back up again when you need it most. 
   <p><a href="https://notely-notetaker.herokuapp.com/">Live application</a></p>
   ------------------------------------------------------
 
