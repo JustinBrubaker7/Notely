@@ -1,9 +1,12 @@
 const fs = require('fs').promises;
-
+const { v4: uuidv4 } = require('uuid');
 
 
 
 class Note {
+    constructor(id){
+        this.id = uuidv4();
+    }
     read(){
        return fs.readFile('./db/db.json', 'utf-8')
     }
