@@ -29,10 +29,29 @@ router.post('/notes', (req,res)=> {
 
 router.delete('/notes/:id', (req, res) => {
     //find note by id
-    const newNote = JSON.stringify(req.body);
-    note.deleteNote(newNote);
-    //remove it from array
-    console.log("DELETE THIS!")
+    let noteID = req.params.id
+
+    note.allNotes().then((notes) => {
+        for (const note of notes) {
+            if(note.id == noteID){
+                //console.log(noteID + " is equal too " + note.id)
+                const noteIndex = notes.indexOf(note)
+                //console.log(notes)
+                notes.splice(noteIndex, 1)
+                //console.log(notes)
+                let allNotes = JSON.stringify(notes) 
+                //console.log(notes)
+                //console.log(typeof notes)
+                fs.writeFile('./db/db.json', allNotes, (err) =>
+                err ? console.log(err) : console.log('Successfully added note!'));
+               
+
+            }
+
+        }
+
+    })
+    note.allNotes().then((notes) => res.json(notes));
 });
 
 
